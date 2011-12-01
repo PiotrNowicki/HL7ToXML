@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<HL7XML_CONFIG>
+	<systemConfig>
+		<option id="omitNonDefined" value="false" />
+	</systemConfig>
+	<message id="ACK" name="Ack">
+		<segment id="MSH" name="Header" isDefault="true">
+			<field id="3" name="SendingApplication" />
+			<field id="4" name="SendingFacility" />
+			<field id="5" name="ReceivingApplication" />
+			<field id="6" name="ReceivingFacility" />
+			<field id="7" name="TimeOfMessage" isAttribute="true" />
+			<field id="8" name="Security" />
+			<field id="9" name="MessageType" isAttribute="true">
+				<component id="1" name="typeId" isAttribute="true" />
+				<component id="2" name="subtypeId" isAttribute="true" />
+			</field>
+			<field id="10" name="MessageControlID" />
+			<field id="11" name="ProcessingID" />
+			<field id="12" name="VersionID" />
+			<field id="13" name="SequenceNumber" />
+			<field id="14" name="ContinuationPointer" />
+			<field id="15" name="AcceptAckType" />
+			<field id="16" name="ApplicationAckType" />
+			<field id="17" name="CountryCode" />
+			<field id="18" name="CharacterSet" />
+			<field id="19" name="LanguageOfMsg" />
+			<field id="20" name="CharacterSetHandlingScheme" />
+		</segment>
+		<segment id="MSA" name="ACKSegment" isDefault="true">
+			<field id="1" name="Code" isAttribute="true" />
+			<field id="2" name="ControlID" isAttribute="true" />
+			<field id="3" name="Message" />
+			<field id="4" name="SequenceNo" isAttribute="true" />
+			<field id="5" name="DelayedAckType" />
+			<field id="6" name="ErrorCondition">
+				<component id="1" name="ID" />
+				<component id="2" name="Text" />
+				<component id="3" name="CodingSystem" />
+				<component id="4" name="AltID" />
+				<component id="5" name="AltText" />
+				<component id="6" name="AltCodingSystem" />
+			</field>
+		</segment>
+	</message>
+	<message id="ORM" subid="O01" name="O01Msg">
+		<segment id="PID" name="Patient" isDefault="true">
+			<field id="1" name="PID" isAttribute="true" />
+			<field id="2" name="PatientID" isAttribute="true" />
+			<field id="3" name="PatientIDList" />
+			<field id="4" name="AltPID">
+				<component id="1" name="ID" />
+				<component id="2" name="CheckDigit" />
+				<component id="3" name="Schema" />
+				<component id="4" name="IDTypeCode" />
+				<component id="5" name="AssigningFacility" />
+			</field>
+			<field id="5" name="Name">
+				<component id="1" name="FamilyName">
+					<subcomponent id="1" name="Name" />
+					<subcomponent id="1" name="LastNamePrefix" />
+				</component>
+				<component id="2" name="GivenName" />
+				<component id="3" name="MiddleName" />
+				<component id="4" name="Suffix" />
+				<component id="5" name="Prefix" />
+			</field>
+			<field id="6" name="MothersMaidenName" />
+			<field id="7" name="DateOfBirth" />
+			<field id="8" name="Sex" />
+			<field id="9" name="Alias" />
+			<field id="10" name="Race" />
+			<field id="11" name="Address">
+				<component id="1" name="StreetAddress" />
+				<component id="2" name="OtherDesignation" />
+				<component id="3" name="City" />
+				<component id="4" name="State" />
+				<component id="5" name="PostalCode" />
+				<component id="6" name="Country" />
+				<component id="7" name="AddressType" />
+				<component id="8" name="GeographicDesignation" />
+
+			</field>
+			<field id="12" name="CountryCode" />
+			<field id="13" name="PhoneHome" />
+			<field id="14" name="PhoneBusiness" />
+			<field id="15" name="Language" />
+			<field id="16" name="MartialStatus" />
+			<field id="17" name="Religion" />
+			<field id="18" name="AccountNumber" />
+			<field id="19" name="SSNNumber" />
+			<field id="20" name="DriversLicenceNumber" />
+			<field id="21" name="MotherID" />
+			<field id="22" name="EthnicGroup" />
+			<field id="23" name="BirthPlace" />
+			<field id="30" name="MultipleBirth" />
+			<field id="25" name="BirthOrder" />
+			<field id="26" name="Citizenship" />
+			<field id="27" name="VeteransMilitaryStatus" />
+			<field id="28" name="Nationality" />
+			<field id="29" name="DeathDate" />
+			<field id="30" name="DeathIndicator" />
+		</segment>
+		<segment id="ORC" name="Order" isDefault="true">
+			<field id="1" name="OrderControl" />
+			<field id="2" name="PlaceOrderNumber" />
+			<field id="3" name="FilterOrderNumber" />
+			<field id="4" name="PlacerGroupNumber" />
+			<field id="5" name="OrderStatus" />
+			<field id="6" name="ResponseFlag" />
+			<field id="7" name="QuantityTiming">
+				<component id="1" name="Quantity" />
+				<component id="2" name="Interval" />
+				<component id="3" name="Duration" />
+				<component id="4" name="StartDate" />
+				<component id="5" name="EndDate" />
+				<component id="6" name="Priority" />
+				<component id="7" name="Condition" />
+				<component id="8" name="Conjunction" />
+				<component id="9" name="OrderSeq" />
+
+			</field>
+			<field id="8" name="Parent" />
+			<field id="9" name="DateOfTransaction" isAttribute="true" />
+			<field id="10" name="EnteredBy" />
+			<field id="11" name="VerifiedBy" />
+			<field id="12" name="OrderingProvider">
+				<component id="1" name="ID" />
+				<component id="2" name="Name">
+					<subcomponent id="1" name="FamilyName" />
+					<subcomponent id="2" name="LastName" />
+				</component>
+				<component id="3" name="GivenName" />
+				<component id="4" name="MiddleName" />
+				<component id="5" name="Suffix" />
+				<component id="6" name="Prefix" />
+				<component id="7" name="Degree" />
+				<component id="8" name="SourceTable" />
+				<component id="9" name="AssigningAuthority" />
+			</field>
+			<field id="13" name="EnterersLocation" />
+			<field id="14" name="CallBackPhoneNo" />
+			<field id="15" name="OrderEffectiveDate" />
+			<field id="16" name="OrderControlCodeReason" />
+			<field id="17" name="EnteringOrganization">
+				<component id="1" name="ID" />
+				<component id="2" name="Text" />
+				<component id="3" name="CodingSystem" />
+				<component id="4" name="AltID" />
+				<component id="5" name="AltText" />
+				<component id="6" name="AltCodingSystem" />
+			</field>
+			<field id="18" name="EnteringDevice" />
+			<field id="19" name="ActionBy" />
+			<field id="20" name="BeneficiaryNoticeCode" />
+		</segment>
+		<segment id="OBR" name="Observation" isDefault="true">
+			<field id="1" name="SetID" isAttribute="true" />
+			<field id="2" name="PlacerOrderNo" isAttribute="true" />
+			<field id="3" name="FilerOrderNo" />
+			<field id="4" name="UniversalServiceID">
+				<component id="1" name="ID" />
+				<component id="2" name="Text" />
+				<component id="3" name="CodingSystem" />
+				<component id="4" name="AltID" />
+				<component id="5" name="AltText" />
+				<component id="6" name="AltCodingSystem" />
+			</field>
+			<field id="16" name="OrderingProvider">
+				<component id="1" name="ID" />
+				<component id="2" name="Name">
+					<subcomponent id="1" name="FamilyName" />
+					<subcomponent id="2" name="LastName" />
+				</component>
+				<component id="3" name="GivenName" />
+				<component id="4" name="MiddleName" />
+				<component id="5" name="Suffix" />
+				<component id="6" name="Prefix" />
+				<component id="7" name="Degree" />
+				<component id="8" name="SourceTable" />
+				<component id="9" name="AssigningAuthority" />
+			</field>
+		</segment>
+	</message>
+	<message id="ORU" subid="R01" name="ORUR01">
+		<segment id="OBX" name="ObservationResult" isDefault="true">
+		</segment>
+	</message>
+</HL7XML_CONFIG>

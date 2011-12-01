@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.hl7toxml.put.poznan.pl/config"
+	xmlns:tns="http://www.hl7toxml.put.poznan.pl/config"
+	elementFormDefault="qualified">
+
+	<element name="HL7XML_CONFIG" type="tns:hl7xmlConfigType"></element>
+
+	<complexType name="componentType">
+		<sequence>
+			<element name="subcomponent" type="tns:subcomponentType"
+				maxOccurs="unbounded" minOccurs="0"></element>
+		</sequence>
+		<attribute name="id" type="string"></attribute>
+		<attribute name="name" type="string"></attribute>
+		<attribute name="isAttribute" type="string"></attribute>
+	</complexType>
+
+	<complexType name="messageType">
+		<sequence>
+			<element name="segment" type="tns:segmentType" maxOccurs="unbounded"
+				minOccurs="0"></element>
+		</sequence>
+		<attribute name="id" type="string"></attribute>
+		<attribute name="name" type="string"></attribute>
+		<attribute name="subid" type="string"></attribute>
+	</complexType>
+
+	<complexType name="optionType">
+		<attribute name="id" type="string"></attribute>
+		<attribute name="value" type="string"></attribute>
+	</complexType>
+
+    <complexType name="subcomponentType">
+    	<attribute name="id" type="string"></attribute>
+    	<attribute name="name" type="string"></attribute>
+    	<attribute name="isAttribute" type="boolean"></attribute>
+    </complexType>
+
+    <complexType name="fieldType">
+    	<sequence>
+    		<element name="component" type="tns:componentType" maxOccurs="unbounded" minOccurs="0"></element>
+    	</sequence>
+    	<attribute name="id" type="string"></attribute>
+    	<attribute name="name" type="string"></attribute>
+    	<attribute name="isAttribute" type="boolean"></attribute>
+    </complexType>
+
+    <complexType name="segmentType">
+    	<sequence>
+    		<element name="field" type="tns:fieldType" maxOccurs="unbounded"
+    			minOccurs="0">
+    		</element>
+    	</sequence>
+    	<attribute name="id" type="string"></attribute>
+    	<attribute name="name" type="string"></attribute>
+    	<attribute name="isDefault" type="boolean"></attribute>
+    </complexType>
+
+
+    <complexType name="systemConfigType">
+    	<sequence>
+    		<element name="option" type="tns:optionType" maxOccurs="unbounded" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="hl7xmlConfigType">
+    	<sequence>
+    		<element name="systemConfig" type="tns:systemConfigType"
+    			maxOccurs="1" minOccurs="0">
+    		</element>
+    		<element name="message" type="tns:messageType" maxOccurs="unbounded" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+</schema>
