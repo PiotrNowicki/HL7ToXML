@@ -1,0 +1,85 @@
+This is an University project which aim was to provide transformation from HL7 medical data format to flexibly 
+configured XML.
+
+It starts a scheduler which listens for input files in specified directory and executed the transformer every x seconds.
+The results are stored in a separate directory.
+The XML element and attribute names can be adequatly set in the configuration file. 
+
+An example of application results can be find below (data was anonimized).
+
+----------------------------------
+HL7 input file
+----------------------------------
+
+MSH|^~\&|2|CHAZON2|1|CHAZON|20081222110953798||ORU^R01|CHAZON220081222110953798|P|2.3|||||POL||PL
+PID||46911|7HG2K|03220400779^^^^P|Nowakowski^Piotr||20030204|M|||Spokojna 13^^Warszawa^^|04||||||||||||||||PL
+OBR|1|3212|125773|416^Klatka piersiowa bez kontrastu||||||||||||102^Doktor^Andrzej^^^^^^3234569
+OBX|1||13MN2AK|1|Opis testowy klatki piersiowej.||||||F|||20081222110953||51^LEKARSKI^JAN^^^^^^5555553
+
+----------------------------------
+XML result after transformation
+----------------------------------
+
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<HL7XML>
+  <Header TimeOfMessage="20081222110953798">
+		<SendingApplication>2</SendingApplication>
+		<SendingFacility>CHAZON2</SendingFacility>
+		<ReceivingApplication>1</ReceivingApplication>
+		<ReceivingFacility>CHAZON</ReceivingFacility>
+		<MessageType subtypeId="R01" typeId="ORU" />
+		<MessageControlID>CHAZON220081222110953798</MessageControlID>
+		<ProcessingID>P</ProcessingID>
+		<VersionID>2.3</VersionID>
+		<CountryCode>POL</CountryCode>
+		<LanguageOfMsg>PL</LanguageOfMsg>
+	</Header>
+	<Patient PatientID="46911">
+		<PatientIDList>7HG2K</PatientIDList>
+		<AltPID>
+			<ID>03220400779</ID>
+			<AssigningFacility>P</AssigningFacility>
+		</AltPID>
+		<Name>
+			<FamilyName>Nowakowski</FamilyName>
+			<GivenName>Piotr</GivenName>
+		</Name>
+		<DateOfBirth>20030204</DateOfBirth>
+		<Sex>M</Sex>
+		<Address>
+			<StreetAddress>Spokojna 13</StreetAddress>
+			<City>Warszawa</City>
+		</Address>
+		<CountryCode>04</CountryCode>
+		<Nationality>PL</Nationality>
+	</Patient>
+	<Observation PlacerOrderNo="3212" SetID="1">
+		<FilerOrderNo>125773</FilerOrderNo>
+		<UniversalServiceID>
+			<ID>416</ID>
+			<Text>Klatka piersiowa bez kontrastu</Text>
+		</UniversalServiceID>
+		<OrderingProvider>
+			<ID>102</ID>
+			<Name>Doktor</Name>
+			<GivenName>Andrzej</GivenName>
+			<AssigningAuthority>3234569</AssigningAuthority>
+		</OrderingProvider>
+	</Observation>
+	<OBX>
+		<field1>1</field1>
+		<field3>13MN2AK</field3>
+		<field4>1</field4>
+		<field5>Opis testowy klatki piersiowej.</field5>
+		<field11>F</field11>
+		<field14>20081222110953</field14>
+		<field16>
+			<comp1>51</comp1>
+			<comp2>LEKARSKI</comp2>
+			<comp3>JAN</comp3>
+			<comp9>5555553</comp9>
+		</field16>
+	</OBX>
+</HL7XML>
+
+==============================================================================
